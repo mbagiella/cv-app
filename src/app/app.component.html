@@ -1,0 +1,129 @@
+<div class="d-flex flex-column flex-md-row sticky-top align-items-center p-3 px-md-4 mb-1 bg-white border-bottom box-shadow">
+      <img src="{{person?.image}}" class="rounded-circle mr-2" style="width:40px; height: 40px" *ngIf="state.img" />
+      <h5 class="my-0 mr-md-auto font-weight-normal">{{person?.name}} {{person?.surname}} <span class="text-muted" *ngIf="state.function">{{person?.function}}</span></h5>
+
+
+     <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" (click)="fr=true" class="btn" [ngClass]="fr ? 'btn-primary' : 'btn-secondary'">FR</button>
+  <button type="button" (click)="fr=false" class="btn"  [ngClass]="fr ? 'btn-secondary' : 'btn-primary'">EN</button>
+</div>
+    </div>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container row">
+        <div class="col-md-4">
+           <img class="flex-auto rounded-circle float-md-right"  style="width: 200px; height: 200px;" src="{{person?.image}}" data-holder-rendered="true">
+        </div>
+        <div class="col-md-8">
+        <h1 class="display-3">{{person?.name+' '+ person?.surname}}</h1>
+        <h3 class="text-muted">{{translate(person?.function_fr,person?.function_en)}}</h3>
+        <p class="lead">{{translate(person?.resume_fr,person?.resume_en)}}</p>
+        <span class="btn btn-primary my-2" (click)=dlCv()>{{t(structure.dl)}}</span>
+
+      </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+  
+
+
+<h2>{{t(structure.xp)}}</h2>
+
+        <div class="card flex-md-row mb-4 box-shadow h-md-250" *ngFor="let e of person?.experience">
+            <div class="card-body">
+              <img  class="mr-2 float-right" style="width:60px; height: 60px;" src="{{e.img}}">
+              <strong class="d-inline-block mb-2 text-primary">{{translate(e.company_fr,e.company_en)}}</strong>
+              <h3 class="mb-0">
+                <span class="text-dark" >{{translate(e.function_fr,e.function_en)}}</span>
+              </h3>
+              <div class="mb-1 text-muted">{{e.begin| date:'mediumDate':'':getLang()}} - {{e.ending| date:'mediumDate':'':getLang()}}</div>
+              <p class="card-text mb-auto">{{translate(e.resume_fr,e.resume_en)}}</p>
+            </div>
+          </div>
+
+
+          
+          </div>
+
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+
+            <h3 id="skills">{{t(structure.sk)}}</h3>
+  <ul class="list-unstyled row">
+    <li class="col-lg-2 col-md-3 col-sm-4 col-6 text-muted" *ngFor="let s of person?.skills">{{s.name}}</li>
+  </ul>
+</div>
+</div>
+
+<div class="container">
+
+
+<div class="container-fluid row">
+  <div class="col-sm-6">
+    <h2 class="border-bottom">{{t(structure.lg)}}</h2>
+    
+    <div class="container" *ngFor="let l of person?.language">
+  <h5 class="mb-0">{{translate(l.name_fr,l.name_en)}}</h5>
+  <h6 class="mb-1 text-muted">{{translate(l.level_fr,l.level_en)}}</h6>
+
+</div>
+
+  </div>
+  <div class="col-sm-6">
+    <h2 class="border-bottom">{{t(structure.ed)}}</h2>
+
+    <div class="container" *ngFor="let e of person?.education">
+
+    <h5 class="mb-0">{{translate(e.degree_fr,e.degree_en)}}</h5>
+    <h6 class="mb-1 text-muted">{{translate(e.major_fr,e.major_en)}}</h6>
+
+
+
+  </div>
+  </div>
+</div>
+<br/>
+</div>
+    <div class="jumbotron jumbotron-fluid mb-0">
+      <div class="container">
+        <div class="row">
+        <div class="col-sm-6">
+          <h2 class="mb-3">{{t(structure.ref)}}</h2>
+
+<div class="container" *ngFor="let r of person?.reference">
+<h5 class="mb-0">{{r.name +' '+r.surname}}</h5>
+<h6 class="mb-0">{{translate(r.function_fr,r.function_en)}}</h6>
+    <div class="mb-1 text-muted">{{r.email}}</div>
+  </div>
+
+<h2 class="mb-3 mt-3">Hobby</h2>
+<div class="container" *ngFor="let h of person?.hobbie">
+<h5 class="mb-1">{{translate(h.name_fr,h.name_en)}}</h5>
+  </div>
+
+
+        </div>
+        <div class="col-sm-6">
+          <h2 class="mb-3" id="documents">Documents</h2>
+
+          <table class="table table-hover">
+
+            <tbody>
+              <tr *ngFor="let d of person?.document" (click)="dl(d.link)">
+                <td><i class="far fa-file-pdf"></i></td>
+                <td>{{translate(d.title_fr,d.title_en)}}</td>
+                <td><i class="fas fa-download"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+</div>
+
+<footer class="container">
+  <hr/>
+      <p>© <a href="mailto:mattia@bagiella.ch">MBAGIELLA</a> 2018</p>
+    </footer>
+
