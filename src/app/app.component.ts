@@ -2,7 +2,6 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { AppService } from './app.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Person} from './model/Person';
-import {STRUCTURE} from './Structure';
 
 
 
@@ -13,11 +12,20 @@ import {STRUCTURE} from './Structure';
 })
 export class AppComponent implements OnInit{
 
-  private fr:boolean=true;
+  fr:boolean=true;
 
-  private structure=STRUCTURE;
+  structure= {
+    dl:['Télécharger CV','Download CV'],
+    xp:['Experiences Professionnelles','Work experience'],
+    ed:['Formation','Education'],
+    lg:['Langue','Language'],
+    ref:['Référence','Reference'],
+    sk:['Compétence informatique','Computer skills']
+  };
 
   state = {img:false,function:false};
+
+
   constructor( private appService: AppService, private http: HttpClient) { }
 
   dlCv(){
