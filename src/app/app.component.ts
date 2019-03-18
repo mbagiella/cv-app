@@ -1,26 +1,56 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { AppService } from './app.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Person} from './model/Person';
+import { Person } from './model/Person';
+import { VERSION } from '@angular/core';
 
-
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,query,stagger,keyframes
+} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+    trigger('listAnimation', [
+      
+      transition('* => *', [
+      
+        query(':enter', style({opacity:0}),{optional:true}),
+        
+        query(':enter', stagger('300ms', [
+            animate('1s ease-in', keyframes([
+              style({opacity:0, transform:'translateY(-75px)', offset: 0}),
+              style({opacity:.5, transform:'translateY(35px)', offset: 0.3}),
+              style({opacity:1, transform:'translateY(0)', offset: 1})
+            ])) 
+        ]),{optional:true}),
+        
+            
+      ])
+    ])
+  ]
 })
+      
+
+
 export class AppComponent implements OnInit{
 
   fr:boolean=true;
+  v:String=VERSION.full;
 
   structure= {
     dl:['Télécharger CV','Download CV'],
-    xp:['Experiences Professionnelles','Work experience'],
+    xp:['Experiences Professionnelles','Work experiences'],
     ed:['Formation','Education'],
-    lg:['Langue','Language'],
-    ref:['Référence','Reference'],
-    sk:['Compétence informatique','Computer skills']
+    lg:['Langues','Languages'],
+    ref:['Références','References'],
+    sk:['Compétences informatiques','Computer skills']
   };
 
   state = {img:false,function:false};
@@ -38,9 +68,9 @@ export class AppComponent implements OnInit{
     this.appService.getPerson()
       .subscribe( data => {
         this.person = data;
-        console.log(data);
       });
   };
+
 
   translate(en,fr){
     return (this.fr)?en:fr;
@@ -49,6 +79,8 @@ export class AppComponent implements OnInit{
   t(data){
     return (this.fr)?data[0]:data[1];
   }
+
+
 
   dl(link){
     window.open(link,'_blank');

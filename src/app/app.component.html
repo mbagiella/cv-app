@@ -1,11 +1,11 @@
-<div class="d-flex flex-column flex-md-row sticky-top align-items-center p-3 px-md-4 mb-1 bg-white border-bottom box-shadow">
+<div class="d-flex flex-column flex-sm-row sticky-top align-items-center p-3 px-md-4 mb-1 bg-white border-bottom box-shadow">
       <img src="{{person?.image}}" class="rounded-circle mr-2" style="width:40px; height: 40px" *ngIf="state.img" />
-      <h5 class="my-0 mr-md-auto font-weight-normal">{{person?.name}} {{person?.surname}} <span class="text-muted" *ngIf="state.function">{{person?.function}}</span></h5>
+      <h5 class="my-0 mr-sm-auto font-weight-normal">{{person?.name}} {{person?.surname}}</h5>
 
 
      <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" (click)="fr=true" class="btn" [ngClass]="fr ? 'btn-primary' : 'btn-secondary'">FR</button>
-  <button type="button" (click)="fr=false" class="btn"  [ngClass]="fr ? 'btn-secondary' : 'btn-primary'">EN</button>
+  <button type="button" (click)="fr=true" class="btn btn-sm" [ngClass]="fr ? 'btn-beige' : 'btn-secondary'">FR</button>
+  <button type="button" (click)="fr=false" class="btn btn-sm"  [ngClass]="fr ? 'btn-secondary' : 'btn-beige'">EN</button>
 </div>
     </div>
     <div class="jumbotron jumbotron-fluid">
@@ -17,7 +17,7 @@
         <h1 class="display-3">{{person?.name+' '+ person?.surname}}</h1>
         <h3 class="text-muted">{{translate(person?.function_fr,person?.function_en)}}</h3>
         <p class="lead">{{translate(person?.resume_fr,person?.resume_en)}}</p>
-        <span class="btn btn-primary my-2" (click)=dlCv()>{{t(structure.dl)}}</span>
+        <span class="btn btn-beige my-2" (click)=dlCv()>{{t(structure.dl)}}</span>
 
       </div>
       </div>
@@ -29,11 +29,11 @@
 
 
 <h2>{{t(structure.xp)}}</h2>
-
+  <div [@listAnimation]='person?.experience?.length' class="list-container">
         <div class="card flex-md-row mb-4 box-shadow h-md-250" *ngFor="let e of person?.experience">
             <div class="card-body">
               <img  class="mr-2 float-right" style="width:60px; height: 60px;" src="{{e.img}}">
-              <strong class="d-inline-block mb-2 text-primary">{{translate(e.company_fr,e.company_en)}}</strong>
+              <strong class="d-inline-block mb-2 text-beige">{{translate(e.company_fr,e.company_en)}}</strong>
               <h3 class="mb-0">
                 <span class="text-dark" >{{translate(e.function_fr,e.function_en)}}</span>
               </h3>
@@ -41,7 +41,7 @@
               <p class="card-text mb-auto">{{translate(e.resume_fr,e.resume_en)}}</p>
             </div>
           </div>
-
+        </div>
 
           
           </div>
@@ -50,7 +50,10 @@
             <div class="container">
 
             <h3 id="skills">{{t(structure.sk)}}</h3>
+             
+
   <ul class="list-unstyled row">
+
     <li class="col-lg-2 col-md-3 col-sm-4 col-6 text-muted" *ngFor="let s of person?.skills">{{s.name}}</li>
   </ul>
 </div>
@@ -123,7 +126,7 @@
 </div>
 
 <footer class="container">
-  <hr/>
-      <p>© <a href="mailto:mattia@bagiella.ch">MBAGIELLA</a> 2018</p>
-    </footer>
+      <p class="float-left">© <a href="mailto:mattia@bagiella.ch">MBAGIELLA</a> 2018</p>
+      <a href="https://angular.io/" class="float-right" style="color:grey"><i class="fab fa-angular" style="color:red"></i>ngular v{{v}}</a>
+</footer>
 

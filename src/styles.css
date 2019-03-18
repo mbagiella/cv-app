@@ -12,6 +12,11 @@ body{
   min-width: 220px;
 }
 
+.card:hover{
+	transform: translate(5px,0);
+	transition: all 0.5s ease;
+}
+
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
@@ -20,4 +25,38 @@ body{
 
 .jumbotron{
 	background-color: #FBFFF8 !important;
+}
+
+
+.btn-beige{
+	background-color: #9D9488;
+	border-color: #9D9488;
+	color: white;
+}
+
+.btn-beige:hover{
+	background-color: #857b6d;
+	border-color: #857b6d;
+}
+
+.text-beige{
+	color: #9D9488;
+}
+
+.btn-beige:focus {   
+  box-shadow: none;
+  outline: 0 none;
+}
+
+tr{
+	cursor: pointer;
+}
+
+a{
+	color: #9D9488;
+	
+}
+
+a:hover{
+	color: #857b6d;
 }

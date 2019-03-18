@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from "@angular/common/http"; 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
 import localeFr from '@angular/common/locales/fr'
 import { registerLocaleData } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localeFr);
 
@@ -17,7 +17,7 @@ registerLocaleData(localeFr);
     BrowserModule,
     NgbModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
