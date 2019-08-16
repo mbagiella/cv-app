@@ -29,8 +29,8 @@
 
 
 <h2>{{t(structure.xp)}}</h2>
-  <div [@listAnimation]='person?.experience?.length' class="list-container">
-        <div class="card flex-md-row mb-4 box-shadow h-md-250" *ngFor="let e of person?.experience">
+  <div class="list-container">
+        <div data-aos="fade-up" class="card flex-md-row mb-4 box-shadow h-md-250" *ngFor="let e of person?.experience">
             <div class="card-body">
               <img  class="mr-2 float-right" style="width:60px; height: 60px;" src="{{e.img}}">
               <strong class="d-inline-block mb-2 text-beige">{{translate(e.company_fr,e.company_en)}}</strong>

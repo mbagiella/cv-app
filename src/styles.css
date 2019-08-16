@@ -9,12 +9,16 @@ body{
 }
 
 .card-deck .card {
-  min-width: 220px;
+  min-width: 220px;  
+}
+
+.card{
+	transition: all 0.5s ease;
 }
 
 .card:hover{
-	transform: translate(5px,0);
-	transition: all 0.5s ease;
+	transform: translate(5px,2px);
+	box-shadow: -5px -2px 5px 0px #888888;
 }
 
 .border-top { border-top: 1px solid #e5e5e5; }
@@ -48,8 +52,28 @@ body{
   outline: 0 none;
 }
 
+tr:hover .fa-download{
+	visibility: visible;
+	opacity: 1;
+}
+
+tr:hover .fa-file-pdf{
+	color: red;
+}
+
+tr .fa-file-pdf{
+	transition: color 0.5s ease
+}
+
+tr .fa-download{
+	visibility: hidden;
+  	opacity: 0;
+  	transition: visibility .3s, opacity .2s linear;
+}
+
 tr{
 	cursor: pointer;
+	transition: all 0.5s ease;
 }
 
 a{
